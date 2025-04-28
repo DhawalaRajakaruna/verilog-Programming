@@ -1,0 +1,19 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000002c1914b2ad0 .scope module, "SignalGenerator" "SignalGenerator" 2 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk";
+o000002c1914d4e18 .functor BUFZ 1, C4<z>; HiZ drive
+v000002c1914b2c60_0 .net "clk", 0 0, o000002c1914d4e18;  0 drivers
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Main.v";
