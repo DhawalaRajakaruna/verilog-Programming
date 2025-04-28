@@ -3,10 +3,10 @@ module dataPulse(
     output reg pulse_out
 );
 
-    reg [7:0] data = 8'b01000110;  // fixed data
+    reg [7:0] data = 8'h00;  // fixed data
     reg [3:0] count = 0;           // enough to count 0 to 8
 
-    //initial pulse_out = 1;         // Set pulse_out = 1 initially
+    initial pulse_out = 1;         // Set pulse_out = 1 initially
 
     always @(posedge clk) begin
         if (count < 8) begin
