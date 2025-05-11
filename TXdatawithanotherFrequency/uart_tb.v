@@ -1,13 +1,13 @@
-`include "uart.v"
-`timescale 1ns / 1ns
+`timescale 10ns / 1ns
 
 module topModule_tb;
 
-    reg clk;    // System clock
-    reg rxd;    // Receive Data (make it reg)
-    wire txd;   // Transmit Data
+    reg clk;
     wire rxclk;
     wire txclk;
+    wire txd;
+    wire rxOut;
+    wire [7:0] datareg;
 
     // Instantiate the topModule
     topModule uut (
@@ -15,28 +15,20 @@ module topModule_tb;
         .rxclk(rxclk),
         .txclk(txclk),
         .txd(txd),
-        .rxd(rxd)
+        .rxd(txd),        // Loopback: connect TX to RX
+        .rxOut(rxOut),
+        .datareg(datareg)      // Output data from the receiver
+
     );
+	  initial begin
+		 clk = 0;
+	  end
+	  always begin 
+		 #1 clk = ~clk;
+	  end 
+	  initial begin
+		 #1000000;
+	  end
 
-    // Clock generation for system clock (clk)
-    initial begin
-        clk = 0;
-        forever #10 clk = ~clk; // 50 MHz clock --> 20ns period
-    end
-
-    // Simulate RX line (idle high)
-    initial begin
-        rxd = 1; // set RXD high at the beginning
-    end
-
-    initial begin
-        // Simulation control
-        $dumpfile("topModule_tb.vcd"); // (Optional) For waveform viewing
-        $dumpvars(0, topModule_tb);
-
-        // Simulation time
-        #1000000000; // Run for 100,000 ns
-        $finish;
-    end
 
 endmodule
